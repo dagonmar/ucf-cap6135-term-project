@@ -7,15 +7,18 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.os.Build;
 import android.content.Context;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private static final String TAG = "MainActivity";
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +28,11 @@ public class MainActivity extends ActionBarActivity {
         Log.d(TAG, "Beginning API scan for emulation.");
         // Build properties
         // looking for armeabi or unknown; likely
-        for( int i = 0; i < Build.SUPPORTED_ABIS.length; i++) {
-            Log.d(TAG, "Supported ABI: " + Build.SUPPORTED_ABIS[i]);
-            if(Build.SUPPORTED_ABIS[i].equals("armeabi") || Build.SUPPORTED_ABIS[i].equals("unknown"))
-                confidence += 40;
-        }
+        //for( int i = 0; i < Build.SUPPORTED_ABIS.length; i++) {
+        //    Log.d(TAG, "Supported ABI: " + Build.SUPPORTED_ABIS[i]);
+        //    if(Build.SUPPORTED_ABIS[i].equals("armeabi") || Build.SUPPORTED_ABIS[i].equals("unknown"))
+        //        confidence += 40;
+        //}
         // looking for unknown board; very certain
         if(Build.BOARD.equals("unknown"))
             confidence += 50;
@@ -104,7 +107,13 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+
+
         setContentView(R.layout.activity_main);
+
+        TextView txtView = (TextView)findViewById(R.id.hello_world);
+        txtView.setText("Total confidence: " + Integer.toString(confidence));
+
     }
 
 

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">TermProject</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Confidence level: </string>
     <string name="action_settings">Settings</string>
     <string name="local_service_started">Backing up settings</string>
     <string name="local_service_stopped">Stopped backup</string>
