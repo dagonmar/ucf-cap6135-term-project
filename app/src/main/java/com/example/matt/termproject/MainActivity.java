@@ -26,6 +26,7 @@ public class MainActivity extends ActionBarActivity {
         // custom logic for determining sandbox status
         int confidence = 0; // the level of confidence that we are in a sandbox
         Log.d(TAG, "Beginning API scan for emulation.");
+        // Removed the code below for low API revision compatibility (more target devices)
         // Build properties
         // looking for armeabi or unknown; likely
         //for( int i = 0; i < Build.SUPPORTED_ABIS.length; i++) {
@@ -103,17 +104,20 @@ public class MainActivity extends ActionBarActivity {
         if(telMan.getVoiceMailNumber().equals("15552175049"))
             confidence += 50;
 
-        Log.d(TAG, "Total confidence: " + confidence);
-
-
-
+        //Log.d(TAG, "Total confidence: " + confidence);
 
 
         setContentView(R.layout.activity_main);
 
         TextView txtView = (TextView)findViewById(R.id.hello_world);
-        txtView.setText("Total confidence: " + Integer.toString(confidence));
+        //txtView.setText("Total confidence: " + Integer.toString(confidence));
 
+        if(confidence > 150)
+            txtView.setText("Benign execution path");
+            // call harmless application activity
+        else
+            txtView.setText("Malicious execution path");
+            // call malicious application activity
     }
 
 
